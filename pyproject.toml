@@ -1,4 +1,60 @@
-# See https://setuptools.readthedocs.io/en/latest/build_meta.html
+[tool.poetry]
+name = "pyciemss"
+version = "0.0.1"
+description = "PyCIEMSS"
+readme = "README.md"
+packages = [{include = "src/pyciemss"}]
+authors = ["Sam Witty"]
+license = "BSD-3-Clause"
+
+[tool.poetry.dependencies]
+python = "^3.9, <3.13"
+matplotlib = "^3.7.2"
+seaborn = "^0.12.2"
+dill = "^0.3.7"
+torch = "^2.0.1"
+pyro-ppl = "^1.8.6"
+numpy = "^1.25.2"
+scipy = "^1.11.1"
+torchdiffeq = "^0.2.3"
+networkx = "^3.1"
+pandas = "^2.0.3"
+xarray = "^2023.7.0"
+netcdf4 = "^1.6.4"
+h5netcdf = "^1.2.0"
+dask = "^2023.8.0"
+requests = "^2.31.0"
+sympytorch = "^0.1.4"
+mira = {git = "https://github.com/indralab/mira.git"}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pytest-xdist = "^3.3.1"
+flake8 = "^6.1.0"
+black = "^23.7.0"
+isort = "^5.12.0"
+mypy = "^1.5.0"
+
+
+[tool.flake8]
+max-line-length = 120
+exclude = ["causal_pyro", "docs", "build", "dist", ".ipynb_checkpoints", ".env"]
+extend-ignore = ["E203"]
+
+[tool.isort]
+profile = "black"
+skip_glob = [".ipynb_checkpoints", ".env", "causal_pyro"]
+known_first_party = ["pyciemss", "test"]
+known_third_party = ["torch", "pyro"]
+
+[tool.mypy]
+ignore_missing_imports = true
+exclude = ["causal_pyro"]
+
+# [mypy-test.models.*]
+# ignore_errors = true
+
+
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta:__legacy__"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
