@@ -3,7 +3,7 @@ name = "pyciemss"
 version = "0.0.1"
 description = "PyCIEMSS"
 readme = "README.md"
-packages = [{include = "src/pyciemss"}]
+packages = [{include = "pyciemss"}]
 authors = ["Sam Witty"]
 license = "BSD-3-Clause"
 
@@ -51,6 +51,9 @@ known_third_party = ["torch", "pyro"]
 ignore_missing_imports = true
 exclude = ["causal_pyro"]
 
+
+[tool.pytest.ini_options]
+pythonpath = "pyciemss"
 # [mypy-test.models.*]
 # ignore_errors = true
 
